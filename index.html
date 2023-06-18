@@ -4,6 +4,26 @@
   <title>Login Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    #video-background {
+      width: 100%;
+      height: auto;
+    }
+
+    .content {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+    }
     body {
       margin: 0;
       padding: 0;
@@ -12,7 +32,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-image: url('assets/img/langit.jpg');
+      background-image: url('assets/img/langit.mp4');
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -65,6 +85,11 @@
   </style>
 </head>
 <body>
+    <div class="video-container">
+    <video autoplay muted loop id="video-background">
+      <source src="assets/img/langit.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="container">
     <h1>Login Dulu Cuy</h1>
     <form id="loginForm" onsubmit="login(event)">
