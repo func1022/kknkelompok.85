@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Dulu Cuy</title>
+  <link rel="icon" href="assets/img/logo.jpg" type="image/x-icon">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('assets/img/background-img.png');
+      background-position: center;
+    }
+    .container {
+      max-width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    select,
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Login Dulu Cuy</h1>
+    <form id="loginForm" onsubmit="login(event)">
+      <select id="username" required onchange="togglePasswordInput()">
+        <option value="">Pilih Username</option>
+        <option value="Admin">Admin</option>
+        <option value="Pengunjung">Pengunjung</option>
+      </select>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script>
+    function togglePasswordInput() {
+      var usernameSelect = document.getElementById("username");
+      var passwordInput = document.getElementById("password");
+
+      if (usernameSelect.value === "Admin") {
+        passwordInput.style.display = "block";
+        passwordInput.value = ""; // Mengosongkan kolom input password
+      } else if (usernameSelect.value === "Pengunjung") {
+        passwordInput.style.display = "block";
+        passwordInput.value = "Pengunjung"; // Mengisi kolom input password dengan "Pengunjung"
+      } else {
+        passwordInput.style.display = "none";
+        passwordInput.value = ""; // Mengosongkan dan menyembunyikan kolom input password
+      }
+    }
+
+    function login(event) {
+      event.preventDefault();
+
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "Admin" && password === "Admin") {
+        alert("Login berhasil!");
+        window.location.href = "home.html";
+      } else if (username === "Pengunjung" && password === "Pengunjung") {
+        alert("Login berhasil!");
+        window.location.href = "home.html";
+      } else {
+        alert("Username atau password salah!");
+      }
+    }
+  </script>
+</body>
+</html>

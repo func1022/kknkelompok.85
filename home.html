@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Halaman Home</title>
+  <link rel="icon" href="assets/img/logo.jpg" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    /* Gaya khusus untuk halaman Home */
+    .slideshow-image {
+      display: none;
+      max-width: 100%;
+      height: auto;
+      opacity: 0;
+      transform: translateX(100%);
+      animation-name: slide;
+      animation-duration: 2s;
+      animation-fill-mode: forwards;
+      border-radius: 1rem;
+    }
+
+    .slideshow-image.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+
+    }
+
+    .slideshow-container {
+      max-width: 40rem; /* Ubah lebar slideshow sesuai kebutuhan */
+      margin: 1rem auto; /* Untuk memusatkan slideshow */
+      position: relative;
+    }
+
+    .slideshow-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .slideshow-navigation {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .slideshow-navigation .prev,
+    .slideshow-navigation .next {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <script src="script.js"></script>
+</head>
+<body>
+  <header>
+    <a href="https://instagram.com/kkn.kelompok_85?igshid=NGExMmI2YTkyZg==" target="_blank">
+        <img src="assets/img/logo.jpg" alt="Logo">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="foto_video.html">Foto/Video Kegiatan</a></li>
+        <li><a href="jadwal.html">Jadwal Kegiatan</a></li>
+        <li><a href="program_kerja.html">Program Kerja</a></li>
+        <li><a href="login.html">Login</a></li>
+
+      </ul>
+    </nav>
+  </header>
+  <h1>Selamat datang di Dokumentasi KKN Kelompok 85</h1>
+  <div class="slideshow-container">
+    <div class="slideshow-navigation">
+      <div class="prev" onclick="showPrevImage()">&#10094;</div>
+      <div class="next" onclick="showNextImage()">&#10095;</div>
+    </div>
+    <img class="slideshow-image active" src="assets/img/gambar1.png" alt="Gambar 1">
+    <img class="slideshow-image" src="assets/img/gambar2.png" alt="Gambar 2">
+    <img class="slideshow-image" src="assets/img/gambar3.png" alt="Gambar 3">
+
+  </div>
+
+  <footer>
+    <p>&copy; KKN Kelompok 85 | 2023</p>
+  </footer>
+
+  <script>
+    // Skrip untuk slideshow gambar
+
+    var slideshowImages = document.querySelectorAll('.slideshow-image');
+    var caption = document.querySelector('.slideshow-caption');
+    var currentImageIndex = 0;
+
+    function showPrevImage() {
+      // Menghilangkan kelas 'active' dari gambar saat ini
+      slideshowImages[currentImageIndex].classList.remove('active');
+
+      // Mengupdate indeks gambar sebelumnya
+      currentImageIndex = (currentImageIndex - 1 + slideshowImages.length) % slideshowImages.length;
+
+      // Menambahkan kelas 'active' pada gambar sebelumnya
+      slideshowImages[currentImageIndex].classList.add('active');
+
+      // Mengupdate teks deskripsi gambar
+      caption.textContent = 'Deskripsi Gambar ' + (currentImageIndex + 1);
+    }
+
+    function showNextImage() {
+      // Menghilangkan kelas 'active' dari gambar saat ini
+      slideshowImages[currentImageIndex].classList.remove('active');
+
+      // Mengupdate indeks gambar berikutnya
+      currentImageIndex = (currentImageIndex + 1) % slideshowImages.length;
+
+      // Menambahkan kelas 'active' pada gambar berikutnya
+      slideshowImages[currentImageIndex].classList.add('active');
+
+      // Mengupdate teks deskripsi gambar
+      caption.textContent = 'Deskripsi Gambar ' + (currentImageIndex + 1);
+    }
+
+    // Mengganti gambar secara otomatis setiap 5 detik
+    setInterval(showNextImage, 5000);
+  </script>
+</body>
+</html>
