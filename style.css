@@ -1,6 +1,10 @@
 /* style.css */
 
 /* Tampilan Umum */
+#LO{
+  background-color: red;
+  color: black;
+}
 body {
   font-family: Arial, sans-serif;
   margin: 0;

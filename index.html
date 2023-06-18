@@ -11,9 +11,11 @@
       height: 100vh;
       background-image: url('assets/img/background-img.png');
       background-position: center;
+      background-repeat: no-repeat;
     }
     .container {
-      max-width: 300px;
+      width: 90%;
+      max-width: 500px;
       padding: 20px;
       background-color: #fff;
       border-radius: 5px;
@@ -40,6 +42,20 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+    }
+
+    /* Responsif untuk perangkat dengan lebar layar <= 375px (misalnya, smartphone) */
+    @media (max-width: 375px) {
+      .container {
+        padding: 10px;
+      }
+    }
+
+    /* Responsif untuk perangkat dengan lebar layar lebih dari 375px (misalnya, tablet dan desktop) */
+    @media (min-width: 376px) {
+      .container {
+        max-width: 400px;
+      }
     }
   </style>
   <script src="script.js"></script>
